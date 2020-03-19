@@ -6,15 +6,15 @@ This tutorial is intended to help users get started quickly with the deployment 
  3. Build and run more comprehensive demonstration code 
 
 *NOTE: This tutorial was written against the Vitis 2019.2 and Vitis AI 1.0 releases*
-# 1. Step 1
-This step will cover installing Vitis AI and testing a simple application on the evaluation board.  Vitis AI can be be broadly broken down into the following components:
+# Step 1
+This step will cover installing the Vitis AI deployment/runtime environment and testing a simple application on the evaluation board.  Vitis AI can be broadly broken down into the following components:
 
- 1. Docker containers of development/build environment
+ 1. Docker containers of development & deployment environment
     - [https://hub.docker.com/r/xilinx/vitis-ai/tags](https://hub.docker.com/r/xilinx/vitis-ai/tags)
- 2. GitHib repository for sources
+ 2. GitHub repository for sources
     - [https://github.com/Xilinx/Vitis-AI](https://github.com/Xilinx/Vitis-AI)
  4. Linux install packages (*.deb) for runtime dependencies
 
-This step will focus on the installation and use of items (1) and (2) above.  While subsequent steps will add the use of item (3).
+Here we will focus on the installation and use of items (1) and (2) above.  While subsequent steps will add the use of item (3).
 
-## 1.1 Setup Vitis AI
+## Setup Vitis AI
