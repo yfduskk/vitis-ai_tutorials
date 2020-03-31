@@ -161,7 +161,7 @@ All face detect examples above use densebox_320_320 over densebox_640_360 becaus
 
 ### 2.2.1 Run Sample Video Application
 
-Now lets move on to a face detect video example.  Since no sample video clip is provided with the Vitis AI installer package we'll use a clip that's openly available under the Creative Commons Attribution license: [sample_cafe.mp4](resource/sample_cafe.mp4)
+Now lets move on to a face detect video example.  Since no sample video clip is provided with the Vitis AI installer package we'll use a clip that's openly available under the Creative Commons Attribution license: [sample_cafe.mp4](resources/sample_cafe.mp4)
 
 | Note: |
 |---|
