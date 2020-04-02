@@ -52,7 +52,7 @@ We'll start by building an example application that uses the Unified API (API0) 
  - ZCU102: [github.com/Xilinx/Vitis-AI/tree/v1.0/mpsoc/vitis_ai_samples_zcu102](https://github.com/Xilinx/Vitis-AI/tree/v1.0/mpsoc/vitis_ai_samples_zcu102)
  - ZCU104: [github.com/Xilinx/Vitis-AI/tree/v1.0/mpsoc/vitis_ai_samples_zcu104](https://github.com/Xilinx/Vitis-AI/tree/v1.0/mpsoc/vitis_ai_samples_zcu104)
 
-A table describing these (7) applications can also be found here: Vitis-AI@GitHub > README.md > [Programming with Vitis AI section](https://github.com/Xilinx/Vitis-AI/tree/v1.0#programming-with-vitis-ai).
+A table describing these (7) applications can also be found here: Vitis-AI@GitHub / README.md > [Programming with Vitis AI section](https://github.com/Xilinx/Vitis-AI/tree/v1.0#programming-with-vitis-ai).
 
 ### 1.2.1 Run Docker Container
 The Docker image that was pulled from Docker Hub will be run to access the build environment (toolchain, libs, headers, etc.) and will also be given access to the local clone of the Vitis AI repo so it can reach the sources to build.  For convenience, a shell script is supplied with necessary commands to both launch the container and give it access to the local repo.  The script also runs Docker in interactive mode so you have a chance to interact with the container.  Launch the container by running the script from the root Vitis AI repo directory as shown below.
