@@ -13,12 +13,12 @@ Prerequisites for this tutorial are as follows:
  - 8GB (or greater) SD card
  - Micro-USB cable
 
-The following is highly recommend (but not mandatory):
- - Host machine (Windows or Linux) with X11 server installed
-   - e.g. Xming for Windows
- - DisplayPort monitor
- - DisplayPort cable
- - Ethernet cable
+One of the following is highly recommended (but not mandatory):
+ - Host machine (Windows or Linux) with X11 server installed and Ethernet cable.  For example, Xming for Windows.
+   - **OR**
+ - DisplayPort monitor and cable
+
+Additionally, to use the board and run the examples standalone (i.e. without host machine interaction) the following would be needed *in addition* to the DisplayPort monitor and cable:
  - USB hub, keyboard, and mouse
  - ZCU102 only: USB 3.0 A Female to Micro B Male OTG Cable/Dongle
 

@@ -7,6 +7,7 @@
 1. Setup Vitis AI and run example applications with minimal dependencies
 2. **Add Vitis AI Library & Model Zoo and run dependent sample applications**
 3. Build and run more comprehensive demonstration code
+---
 
 This step will cover installing the Vitis AI Library and Model Zoo on the targeted evaluation board.  It assumes you've already setup the board and SD card as provided in Step 1.  It will also cover running some simple demos that utilize the installed library and models.
 
@@ -72,10 +73,10 @@ In this case, the examples are provided pre-compiled so there's no need to build
  - Vitis-AI@GitHub / Vitis-AI-Library / [demo](https://github.com/Xilinx/Vitis-AI/tree/v1.0/Vitis-AI-Library/demo)
  - Vitis-AI@GitHub / Vitis-AI-Library / [samples](https://github.com/Xilinx/Vitis-AI/tree/v1.0/Vitis-AI-Library/samples)
 
- ## 2.2 Run Vitis AI Library Example
+## 2.2 Run Vitis AI Library Example
 
- The Vitis AI Library package provides two types of examples:
-  - **samples:** These examples provide a suite of simple performance tests for each sub-category (e.g. classification, segmentation, facedetect, etc.) in the folder.  Note that some of these examples rely on pre-built binaries; consequently, they are not all appropriate as reference code.
+The Vitis AI Library package provides two types of examples:
+  - **samples:** These examples provide a suite of simple  tests for each type of model (e.g. classification, segmentation, facedetect, etc.) in the folder.  That is, for each model there's an application that: works with an image, works with video input, tests performance, and tests accuracy. Note that some of these examples rely on pre-built binaries so although the code allows for quick benchmarking it is not necessarily re-useable as reference code for your own application.
   - **demo:** These examples rely strictly on Vitis AI Library APIs so all the source code here can be re-used as reference code.  They cover a range of API levels from API0 all the way up to API2, in addition to some multi-task demos.
 
 For a quick validation of our setup (i.e. correct use of installed packages) a 'sample' example will be more appropriate.  The 'demo' examples will be exercised in the final step (Step 3) of this tutorial.
@@ -122,9 +123,9 @@ WARNING: Logging before InitGoogleLogging() is written to STDERR
 I0330 03:37:50.826640  2778 process_result.hpp:25]  1.00007 0.19375 0.14375 0.14375 0.15625
 I0330 03:37:50.830754  2778 process_result.hpp:25]  1.00007 0.53125 0.1 0.1375 0.1625
 ```
-As seen in the `readme` the 'WARNING' is expected and can be safely ignored.  The result provides the probability of a face being detected (~99%) and the coordinates of a bounding box for the detected face.  A new `sample_facedetect_result.jpg` is also created so results can be viewed back on the host.
+As seen in the `readme` the 'WARNING' is expected and can be safely ignored.  The result provides the probability of a face being detected (~99%) and the coordinates of a bounding box for the detected face.  A new `sample_facedetect_result.jpg` is also created as shown below.
 
-TODO: View file from host by running Python server on board (python -m SimpleHTTPServer 8080)
+![alt text](resources/sample_facedetect_result.jpg "sample_facedetect_result.jpg")
 
 Similarly, the performance test would be run as follows:
 ```
@@ -159,20 +160,41 @@ As one would expect this increases the measured FPS.
 |---|
 All face detect examples above use densebox_320_320 over densebox_640_360 because the provided sample image (sample_facedetect.jpg) is 386x450 and scaling to 320x320 causes less distortion.  In fact, if you run the same example with densebox_640_360 the detection results will not be accurate for the sample image.
 
-### 2.2.1 Run Sample Video Application
+### 2.2.2 Run Sample Video Application
 
-Now lets move on to a face detect video example.  Since no sample video clip is provided with the Vitis AI installer package we'll use a clip that's openly available under the Creative Commons Attribution license: [sample_cafe.mp4](resources/sample_cafe.mp4)
+Now lets move on to a face detect video example.  Since no sample video clip is provided with the Vitis AI installer package or the sample video archive (vitis_ai_library_r1.0_video.tar.gz) we'll use a clip that's openly available under the Creative Commons Attribution license: [sample_cafe.mp4](resources/sample_cafe.mp4)
 
 | Note: |
 |---|
 The original video was clipped to a timeframe that included people in the foreground and increased to 60fps (from ~25fps).  This framerate was increased because the test application displays frames as fast as it processes them, which turns out to be >50fps in this case.  If the original framerate was used it would be difficult to see the results in the video because the playback is accelerated.
 
-To run the test using the sample video clip simply download the clip from this tutorial and place it on the SD card under the `facedetect` directory.
+To run the test using the sample video clip simply download the clip (i.e. view raw) from this tutorial and place it on the SD card under the `facedetect` directory.
 ```
 ./test_video_facedetect densebox_640_360 sample_cafe.mp4
 ```
-The results are shown by displaying the original video with bounding boxes around detected faces.  Use <Ctrl+C> to exit the test at anytime.  The `densebox_640_360` model was selected because this matches the scale of the sample video clip.
+The results are shown by displaying the original video with bounding boxes around detected faces.  Use <Ctrl+C> to exit the test at anytime.  The `densebox_640_360` model was selected because this matches the aspect ratio of the sample video clip.
 
-Additional examples, including running the test application using video input from a USB webcam can be found in the Vitis AI Libraries documentation: Vitis-AI@GitHub / Vitis-AI-Library / README.md > [Running Vitis AI Library Examples](https://github.com/Xilinx/Vitis-AI/tree/v1.0/Vitis-AI-Library#running-vitis-ai-library-examples)
+Additional examples, including running the face detect application using video input from a USB webcam, can be found in the Vitis AI Libraries documentation: Vitis-AI@GitHub / Vitis-AI-Library / README.md > [Running Vitis AI Library Examples](https://github.com/Xilinx/Vitis-AI/tree/v1.0/Vitis-AI-Library#running-vitis-ai-library-examples)
+
+### 2.2.3 Notes on Sample Applications
+
+|Sample | Image Test | Video Test | Perf Test | Accuracy Test |
+|---|---|---|---|---|
+|classification|input image provided, output image generated (see readme)|no input video provided |test_perf\* \<model\> \<\*.list\> (see readme)|run w/o args for info|
+|facedetect|input image provided, output image generated (see readme)|no input video provided (see [tutorial samples](resources/README.md)) |test_perf\* \<model\> \<*.list\> (see readme)|not working|
+|facelandmark|input image provided, output image generated (see readme)|no input video provided|test_perf\* \<model\> \<*.list\> (see readme)|mkdir result; test_acc\* \<\*.list\> (see test_acc\*.cpp)|
+|multitask|input image provided, output image generated (see readme)|use sample clip\*: demo / segs_and_roadline_detect / seg_512_288.avi|test_perf\* \<model\> \<*.list\> (see readme)|TBD|
+|openpose|input image provided, output image generated (see readme)|use sample clip\*: demo / seg_and_pose_detect / pose_960_540.avi|test_perf\* \<model\> \<*.list\> (see readme)|TBD|
+|posedetect|input image provided, output image generated (see readme)|no input video provided|test_perf\* \<model\> \<*.list\> (see readme)|-|
+|refinedet|input image provided, output image generated (see readme)|no input video provided|test_perf\* \<model\> \<*.list\> (see readme)|TBD|
+|reid|input images provided, results printed to terminal (see readme)|n/a|test_perf\* \<model\> \<*.list\> (see readme)|TBD|
+|roadline|input image provided, output image generated (see readme)|use sample clip\*: demo / segs_and_roadline_detect / lane_640_480.avi|test_perf\* \<model\> \<*.list\> (see readme)|TBD|
+|segmentation|input image provided, output image generated (see readme)|can use sample clip even though aspect ratio is not correct\*: demo / segs_and_roadline_detect / seg_512_288.avi |test_perf\* \<model\> \<*.list\> (see readme)|TBD|
+|ssd|input image provided, output image generated (see readme)|use sample clip\*: demo / segs_and_roadline_detect / lane_640_480.avi|test_perf\* \<model\> \<*.list\> (see readme)|TBD|
+|tfssd|input image provided, output image generated (see readme)|no input video provided|test_perf\* \<model\> \<*.list\> (see readme)|TBD|
+|yolov2|input image provided, output image generated (see readme)|no input video provided|test_perf\* \<model\> \<*.list\> (see readme)|TBD|
+|yolov3|input image provided, output image generated (see readme)|no input video provided|test_perf\* \<model\> \<*.list\> (see readme)|TBD|
+
+\*NOTE:  Link to download sample video archive: [vitis_ai_library_r1.0_video.tar.gz](https://www.xilinx.com/bin/public/openDownload?filename=vitis_ai_library_r1.0_video.tar.gz).  Alternatively, you can navigate to the download link in Vitis AI documentation: Vitis-AI@GitHub / Vitis-AI-Library / README.md > Quick Start > [Setting Up The Target](https://github.com/Xilinx/Vitis-AI/tree/v1.0/Vitis-AI-Library#setting-up-the-target) > 3. Installing AI Library Package > Download the demo video files...
 
 [STEP 1](step1.md) | **STEP 2** | [STEP 3](step3.md)

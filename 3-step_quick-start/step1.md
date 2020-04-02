@@ -7,6 +7,7 @@
 1. **Setup Vitis AI and run example applications with minimal dependencies**
 2. Add Vitis AI Library and Model Zoo and run dependent sample applications
 3. Build and run more comprehensive demonstration code
+---
 
 This step will cover installing the Vitis AI deployment/runtime environment and testing a simple application on the evaluation board.  Vitis AI can be broadly broken down into the following components:
 
