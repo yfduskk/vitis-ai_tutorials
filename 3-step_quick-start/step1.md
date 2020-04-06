@@ -196,7 +196,7 @@ If you have any optional hardware it can also be connected at this time.
 
 Additional info on board setup can be found in [UG1414 (v1.0)](https://www.xilinx.com/support/documentation/sw_manuals/vitis_ai/1_0/ug1414-vitis-ai.pdf) here: *Ch.2 (Quick Start) > Setting Up The Eval Board*.
 
-### 1.4 Running the Example
+## 1.4 Running the Example
 
 In this section we will run the board, install core libs, and finally run some examples.
 

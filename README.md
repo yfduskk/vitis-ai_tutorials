@@ -2,8 +2,9 @@
 Tutorials to help get started with Xilinx Vitis AI platform.
 
  - [3-Step Quick Start to Vitis-AI on Edge Devices](3-step_quick-start/README.md)
+ - Coming Soon: Whole Application Acceleration (ML+x)
 
-Conventions used in these tutorials:
+Syntax conventions used in these tutorials:
   - **\<text\>** represents text to be replaced with an appropriate value
   - **\<alpha|beta\>** represents text that should be replaced with one of the provided choices (i.e. 'alpha' or 'beta' in this case)
   - **/** is used to build paths to some resource (e.g. filesystem path or repository path) such as "repo-name / child-directory / file"

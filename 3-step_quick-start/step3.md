@@ -48,6 +48,6 @@ This results in two windows opening.  One will display the original input and th
 |segs_and_roadline_detect|multi-channel and multi-network|API1 & multi-task|AVI videos provided in demo video archive (see previous section for link)|
 |yolov3|ADAS example (classifies cars, bicycles, pedestrians)|API2|JPG file provided with example|
 
-*BONUS NOTE: In the process of writing this I came across a neat way to view to view image results from the host machine: `python -m SimpleHTTPServer 8080`.  This will start a Python based http server on the board so you can view files using a host web browser.*
+*BONUS NOTE: In the process of writing this I came across a neat way to view image results from the host machine: `python -m SimpleHTTPServer 8080`.  This will start a Python based http server on the board so you can view files using a host web browser.*
 
 [STEP 1](step1.md) | [STEP 2](step2.md) | **STEP 3**
