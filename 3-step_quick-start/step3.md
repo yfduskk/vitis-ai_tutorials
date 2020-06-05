@@ -19,23 +19,18 @@ For each of the examples in the `demo` directory a `readme` file is provided wit
 
 ### 3.1.1 Run Demo Examples
 
-Here we'll cover the 'seg_and_pose_detect' multi-task demo that processes multiple video channels.  The videos will come from the demo video archive:
- - [vitis_ai_library_r1.0_video.tar.gz](https://www.xilinx.com/bin/public/openDownload?filename=vitis_ai_library_r1.0_video.tar.gz).  
-
-Alternatively, you can navigate to the download link in Vitis AI documentation: Vitis-AI@GitHub / Vitis-AI-Library / README.md > Quick Start > [Setting Up The Target](https://github.com/Xilinx/Vitis-AI/tree/v1.0/Vitis-AI-Library#setting-up-the-target) > 3. Installing AI Library Package > Download the demo video files...
-
-This archive needs to be transferred to the SD card and extracted.  Here we assume it's been extracted to the home directory (e.g. /home/user/).
-
+Here we'll cover the 'seg_and_pose_detect' multi-task demo that processes multiple video channels.  A sample video clip is provided that comes from the Vitis-AI-Library video samples archive that was extracted in Step 2 (section 2.2).
 ```
-$ cd /usr/share/vitis_ai_library/demo/seg_and_pose_detect/
+$ export DISPLAY=:0.0 # Not needed for standalone board use
+$ cd ~/overview/demo/seg_and_pose_detect
 $ cat readme
 $ sh build.sh
-$ ./seg_and_pose_detect_x  ~/vitis_ai_library_r1.0/demo/seg_and_pose_detect/seg_960_540.avi  ~/vitis_ai_library_r1.0/demo/seg_and_pose_detect/pose_960_540.avi  -t 3 -t 3 > /dev/null 2>&1
+$ ./seg_and_pose_detect_x seg_960_540.avi 0 -t 3 -t 3 > /dev/null 2>&1
 ```
 
 | Note: |
-|---|
-The two multi-task demo examples provide two execution modes as described in the `readme`: DRM or X.  If you are using the board standalone or doing X-forwarding to the host machine then you should use the X mode command as was used above.  If you're connected to the board from the host (i.e. UART or SSH) then you can choose either mode but DRM will require stopping the desktop interface and render results to the display directly rather than through an X (desktop) window.
+|:---|
+|The two multi-task demo examples provide two execution modes as described in the `readme`: DRM or X.  If you are using the board standalone or doing X-forwarding to the host machine then you should use the X mode command as was used above.  If you're connected to the board from the host (i.e. UART or SSH) then you can choose either mode but DRM will require stopping the desktop interface and render results to the display directly rather than through an X (desktop) window.|
 
 This results in two windows opening.  One will display the original input and then the same input with segmentation results visible.  The other window will be similar but for the pose detection channel.  Quit the application at anytime with <Ctrl+C>.
 

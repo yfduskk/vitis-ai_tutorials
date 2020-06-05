@@ -7,8 +7,8 @@ This tutorial is intended to help users get started quickly with the deployment 
 3. [Build and run more comprehensive demonstration code](step3.md)
 
 Prerequisites for this tutorial are as follows:
- - Linux host machine (or VM) with Docker installed
-   - Docker installation instructions available here: [docs.docker.com/install](https://docs.docker.com/install/)
+ - Linux host machine (or VM) with supported distro
+   - Ubuntu 16.04, 18.04; CentOS 7.4, 7.5; RHEL 7.4, 7.5
  - ZCU102 or ZCU104 evaluation board
  - 8GB (or greater) SD card
  - Micro-USB cable
@@ -23,8 +23,8 @@ Additionally, to use the board and run the examples standalone (i.e. without hos
  - ZCU102 only: USB 3.0 A Female to Micro B Male OTG Cable/Dongle
 
 | IMPORTANT NOTE: |
-|---|
-**This tutorial was written against the Vitis 2019.2 and Vitis AI 1.0 releases**
+|:---|
+|**This tutorial uses the Vitis AI 1.1 release.  For other releases view this tutorial at the corresponding Git tag.  Additionally, a specific commit point _after_ "v1.1" tag is used in order to incorporate some post-release fixes.  In particular, the v1.1.2 vitis-ai-runtime archive is needed over the original v1.1.0 file.**
 
 Continue to the tutorial using the links below.
 
